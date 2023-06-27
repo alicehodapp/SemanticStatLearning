@@ -95,11 +95,11 @@ class SequentialBayesianDcat:
 def main(taus, model):
     # load in all data files and concatinate them
     df_all = []
-    directory = os.fsencode('/Users/alice/transition_probabilities/BCL_data')
+    directory = os.fsencode('.../BCL_data')
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
         if filename.endswith('.csv'):
-            df =  pd.read_csv('/Users/alice/transition_probabilities/BCL_data/' + filename, header=None) 
+            df =  pd.read_csv('.../BCL_data/' + filename, header=None) 
             df_all.append(df) 
 
     df_all = pd.concat(df_all, axis=0, ignore_index=True)
@@ -124,7 +124,7 @@ def main(taus, model):
             surp_all.append(df_surp)              
 
     surp_all = pd.concat(surp_all)
-    output_folder = '/Users/alice/transition_probabilities/transition_prob/BCL/output/'
+    output_folder = '.../output/'
     if not os.path.exists(output_folder):
         os.mkdir(output_folder)
     surp_all.to_csv(output_folder + 'surprise_' + model + '.csv')

@@ -24,8 +24,8 @@ class SequentialBayesianDcat:
             transitions = np.zeros((self.length,5,5),dtype=int)
             for indx in np.arange(1,self.length):
                 transitions[indx,Mobs[indx-1,:]==1,Mobs[indx,:]==1] = 1
-                transitions[0,:,:] = np.ones((1,5,5)) # add artificial row of prior observations
-                self.Mobs = transitions
+            transitions[0,:,:] = np.ones((1,5,5)) # add artificial row of prior observations
+            self.Mobs = transitions
 
     # estimate parameters of the Dirichlet distribution
     def compute_alphas(self, tau):
